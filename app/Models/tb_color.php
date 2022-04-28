@@ -13,5 +13,5 @@ class tb_color extends Model
         'name_color',
     ];
     protected $primaryKey = 'id_color';
-    public $timestamps = true;
+    public $timestamps = false;
 }

@@ -17,5 +17,5 @@ class tb_comment extends Model
         'id_product',
     ];
     protected $primaryKey = 'id_comment';
-    public $timestamps = true;
+    public $timestamps = false;
 }

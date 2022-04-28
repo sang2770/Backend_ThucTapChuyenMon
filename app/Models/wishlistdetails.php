@@ -12,5 +12,5 @@ class wishlistdetails extends Model
         'id_wishlist',
         'id_product',
     ];
-    public $timestamps = true; 
+    public $timestamps = false; 
 }

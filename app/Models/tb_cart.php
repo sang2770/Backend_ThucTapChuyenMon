@@ -13,5 +13,5 @@ class tb_cart extends Model
         'id_product',
         'number', 
     ];
-    public $timestamps = true;
+    public $timestamps = false;
 }

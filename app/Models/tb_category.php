@@ -13,5 +13,5 @@ class tb_category extends Model
         'name_category',
     ];
     protected $primaryKey = 'id_category';
-    public $timestamps = true;
+    public $timestamps = false;
 }

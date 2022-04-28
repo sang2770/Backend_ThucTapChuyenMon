@@ -13,5 +13,5 @@ class tb_size extends Model
         'size',
     ];
     protected $primaryKey = 'id_size';
-    public $timestamps = true;
+    public $timestamps = false;
 }

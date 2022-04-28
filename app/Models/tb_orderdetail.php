@@ -14,5 +14,5 @@ class tb_orderdetail extends Model
         'number',
         'price',
     ];
-    public $timestamps = true;
+    public $timestamps = false;
 }

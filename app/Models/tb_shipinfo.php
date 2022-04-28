@@ -17,5 +17,5 @@ class tb_shipinfo extends Model
         'id_user',
     ];
     protected $primaryKey = 'id_ship';
-    public $timestamps = true;       
+    public $timestamps = false;       
 }

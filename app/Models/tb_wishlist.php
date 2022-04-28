@@ -13,5 +13,5 @@ class tb_wishlist extends Model
         'id_user',
     ];
     protected $primaryKey = 'id_wishlist';
-    public $timestamps = true; 
+    public $timestamps = false; 
 }

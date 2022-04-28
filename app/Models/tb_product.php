@@ -20,5 +20,5 @@ class tb_product extends Model
         'id_category',
     ];
     protected $primaryKey = 'id_product';
-    public $timestamps = true;
+    public $timestamps = false;
 }

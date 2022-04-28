@@ -15,5 +15,5 @@ class tb_user extends Model
         'password',
     ];
     protected $primaryKey = 'id_user';
-    public $timestamps = true; 
+    public $timestamps = false; 
 }

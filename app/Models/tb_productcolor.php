@@ -12,5 +12,5 @@ class tb_productcolor extends Model
         'id_product',
         'id_color',
     ];
-    public $timestamps = true;
+    public $timestamps = false;
 }

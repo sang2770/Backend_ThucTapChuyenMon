@@ -12,5 +12,5 @@ class tb_productsize extends Model
         'id_product',
         'id_size',
     ];
-    public $timestamps = true;
+    public $timestamps = false;
 }

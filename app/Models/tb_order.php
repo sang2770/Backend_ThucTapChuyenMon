@@ -15,6 +15,6 @@ class tb_order extends Model
         'time',
         'id_user',
     ];
-    protected $primaryKey = 'id_comment';
-    public $timestamps = true;
+    protected $primaryKey = 'id_order';
+    public $timestamps = false;
 }

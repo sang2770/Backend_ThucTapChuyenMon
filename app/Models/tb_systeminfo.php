@@ -15,5 +15,5 @@ class tb_systeminfo extends Model
         'aboutus',
     ];
     protected $primaryKey = 'id_shop';
-    public $timestamps = true;   
+    public $timestamps = false;   
 }
