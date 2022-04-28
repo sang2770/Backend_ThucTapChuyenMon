@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tb_user', function (Blueprint $table) {
-            $table->increments('id_user');
+        Schema::create('tb_admin', function (Blueprint $table) {
+            $table->increments('id_admin');
             $table->string('name', 50)->nullable();
             $table->string('email', 50)->nullable();
             $table->string('password', 100)->nullable();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tb_user');
+        Schema::dropIfExists('tb_admin');
     }
 };
