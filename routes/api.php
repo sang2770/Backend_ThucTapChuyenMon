@@ -9,8 +9,10 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OderController;
 use App\Http\Controllers\ShipinfoController;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\SizeController;
-
+use App\Http\Controllers\WishListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +53,50 @@ Route::group([
         Route::get('me', [AuthUserController::class, 'user']);
     });
 });
+/*
+|--------------------------------------------------------------------------
+| Wish List
+|--------------------------------------------------------------------------
+*/
+
+Route::group([
+    'prefix' => 'wishlist',
+    'middleware' => ['auth:sanctum']
+], function () {
+    Route::get('list/{id}', [WishListController::class, 'index']);  
+    Route::post('insert', [WishListController::class, 'store']); 
+    Route::delete('delete/{idWish}/{idPro}', [WishListController::class, 'destroy']); 
+});  
+
+
+/*
+|--------------------------------------------------------------------------
+| Comment
+|--------------------------------------------------------------------------
+*/
+
+Route::group([
+    'prefix' => 'comment',
+    'middleware' => ['auth:sanctum']
+], function () {
+    Route::get('list-comment/{id}', [CommentController::class, 'index']);  
+    Route::post('insert-comment', [CommentController::class, 'store']); 
+});  
+
+/*
+|--------------------------------------------------------------------------
+| System Info
+|--------------------------------------------------------------------------
+*/
+
+Route::group([
+    'prefix' => 'System-Inf',
+    'middleware' => ['auth:sanctum']
+], function () {
+    Route::get('list-Inf', [InfoController::class, 'index']);  
+    Route::put('update-Inf', [InfoController::class, 'update']); 
+});  
+
 Route::group([
     'prefix' => 'products',
 ], function () {
