@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class tb_comment extends Model
 {
-    protected $table = 'tb_color';
+    protected $table = 'tb_comment';
     protected $fillable = [
         'id_comment',
         'time',
