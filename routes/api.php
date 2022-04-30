@@ -51,6 +51,7 @@ Route::group([
         Route::get('me', [AuthUserController::class, 'user']);
     });
 });
+
 Route::group([
     'prefix' => 'products',
 ], function () {
