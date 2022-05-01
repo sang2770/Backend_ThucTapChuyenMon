@@ -34,13 +34,13 @@ class OrderDetailSeeder extends Seeder
             'price' => "50000",
         ]);
         tb_orderdetail::insert([
-            'id_product' => "7",
+            'id_product' => "4",
             'id_order' => "3",
             'number' => "2",
             'price' => "100000",
         ]);
         tb_orderdetail::insert([
-            'id_product' => "6",
+            'id_product' => "2",
             'id_order' => "3",
             'number' => "1",
             'price' => "120000",

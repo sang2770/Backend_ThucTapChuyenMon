@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tb_order', function (Blueprint $table) {
             $table->increments('id_order');
             $table->string('address', 100);
-            $table->boolean('status');
+            $table->integer('status');
             $table->date('time');
             $table->unsignedInteger('id_user');
             $table->foreign('id_user')->references('id_user')->on('tb_user');
