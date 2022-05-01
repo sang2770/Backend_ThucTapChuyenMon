@@ -29,10 +29,11 @@ Route::group([
     'prefix' => 'auth/admin'
 ], function () {
     Route::post('login', [AuthController::class, 'login']);
+    Route::post('signup', [AuthController::class, 'register']);
     Route::group([
         'middleware' => ['auth:sanctum']
     ], function () {
-    Route::post('signup', [AuthController::class, 'register']);
+    
         Route::delete('logout', [AuthController::class, 'logout']);
         Route::get('me', [AuthController::class, 'user']);
         Route::put('changePassword', [AuthController::class, 'changePass']);
