@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OderController;
 use App\Http\Controllers\ShipinfoController;
 use App\Http\Controllers\ColorController;
@@ -13,7 +14,6 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\WishListController;
-use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,6 +35,8 @@ Route::group([
     
         Route::delete('logout', [AuthController::class, 'logout']);
         Route::get('me', [AuthController::class, 'user']);
+        Route::put('changePassword', [AuthController::class, 'changePass']);
+
     });
 });
 /*
@@ -96,6 +98,17 @@ Route::group([
 ], function () {
     Route::get('list-Inf', [InfoController::class, 'index']);  
     Route::put('update-Inf', [InfoController::class, 'update']); 
+});  
+/*
+|--------------------------------------------------------------------------
+| Category
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    'prefix' => 'Category',
+    'middleware' => ['auth:sanctum']
+], function () {
+    Route::get('list', [CategoryController::class, 'index']);  
 });  
 
 Route::group([
