@@ -16,16 +16,13 @@ class categorySeeder extends Seeder
     public function run()
     {
         tb_category::insert([
-            'id_category' => "1",
-            'name_category' => "áo thun",
+            'name_category' => "Woman",
         ]);
         tb_category::insert([
-            'id_category' => "2",
-            'name_category' => "áo phông",
+            'name_category' => "Men's",
         ]);
         tb_category::insert([
-            'id_category' => "3",
-            'name_category' => "quần jean",
+            'name_category' => "Summer",
         ]);
     }
 }

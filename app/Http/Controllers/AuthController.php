@@ -78,4 +78,36 @@ class AuthController extends Controller
         }
 
     }
+
+    // change pass
+    public function changePass(Request $request)
+    {
+        $validator = Validator::make($request->input(), [
+            'id_admin' => 'required',
+            'Old' => 'required',
+            'New' => 'required',
+
+        ]);
+        if ($validator->fails()) {
+            // Bad Request
+            return response()->json($validator->getMessageBag(), 400);
+        }
+        try {
+            $Id = $request->id_admin;
+            $New =  Hash::make($request->New);
+            $user = Admin::where('id_admin', $Id)->first();
+            // var_dump($user);
+            if (!$user) {
+                return response()->json(['status' => 'Failed', 'Err_Message' => "Not Found"]);
+            } elseif (!Hash::check($request->Old, $user->password)) {
+                return response()->json(['status' => 'Failed', 'Err_Message' => "Mật khẩu không chính xác!"]);
+            } else {
+                Admin::where("id_admin", $Id)->update(['password' => $New]);
+                $request->user()->currentAccessToken()->delete();
+                return response()->json(['status' => 'Success']);
+            }
+        } catch (Exception $e) {
+            return response()->json(['status' => 'Failed', 'Err_Message' => $e->getMessage()]);
+        }
+    }
 }

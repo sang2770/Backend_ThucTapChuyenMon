@@ -14,11 +14,13 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
+        // ?Name=?Category=?PriceFrom=?PriceTo=?
         $limit = $request->query('limit');
         $page = $request->query('page');
         try {
-            $product=tb_product::paginate($limit, [
-                'id_product', 'rate', 'availability', 'descriptions', 'name', 'price', 'discount', 'image'
+            // $ListProduct=tb_product;
+            $product=tb_product::filter($request)->paginate($limit, [
+                'id_product', 'rate', 'availability', 'descriptions', 'name', 'price', 'discount', 'image','id_category'
             ], 'page', $page)->toArray();
             return response()->json(['status' => "Success", 'data' => $product['data'], 'pagination' => [
                 "page" => $product['current_page'],

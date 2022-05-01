@@ -16,7 +16,6 @@ class productSeeder extends Seeder
     public function run()
     {
         tb_product::insert([
-            'id_product' => "1",
             'rate' => "4",
             'availability' => "abcdefgh",
             'descriptions' => "áo thun nam siêu đẹp, mặc thoải mãi dễ chịu",
@@ -27,7 +26,6 @@ class productSeeder extends Seeder
             'id_category' => "1",
         ]);
         tb_product::insert([
-            'id_product' => "2",
             'rate' => "4.5",
             'availability' => "abcdefgh",
             'descriptions' => "áo phông nam siêu đẹp, mặc thoải mãi dễ chịu",
@@ -38,7 +36,6 @@ class productSeeder extends Seeder
             'id_category' => "2",
         ]);
         tb_product::insert([
-            'id_product' => "3",
             'rate' => "5",
             'availability' => "abcdefgh",
             'descriptions' => "quần âu cao cấp siêu đẹp, mặc thoải mãi",
@@ -49,7 +46,6 @@ class productSeeder extends Seeder
             'id_category' => "3",
         ]);
         tb_product::insert([
-            'id_product' => "4",
             'rate' => "5",
             'availability' => "abcdefgh",
             'descriptions' => "áo thun nữ ngắn tay phong cách trẻ trung",
@@ -57,6 +53,16 @@ class productSeeder extends Seeder
             'price' => "100000",
             'discount' => "0",
             'image' => "4.jpg",
+            'id_category' => "1",
+        ]);
+        tb_product::insert([
+            'rate' => "5",
+            'availability' => "abcdefgh",
+            'descriptions' => "áo thun nữ ngắn tay phong cách trẻ trung",
+            'name' => "áo thun nữ phong cách",
+            'price' => "100000",
+            'discount' => "0",
+            'image' => "5.jpg",
             'id_category' => "1",
         ]);
     }
