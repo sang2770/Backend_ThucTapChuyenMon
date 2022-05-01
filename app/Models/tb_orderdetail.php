@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class tb_orderdetail extends Model
 {
-    protected $table = 'tb_order';
+    protected $table = 'tb_order_details';
     protected $fillable = [
         'id_product',
         'id_order',
