@@ -153,6 +153,7 @@ Route::group([
     'prefix' => 'order',
 ], function () {
     Route::get('list-orders', [OderController::class, 'index']);  //danh sách các đơn hàng phân trang
+    Route::get('list-orders/{id}', [OderController::class, 'FilterID']);  //danh sách các đơn hàng phân trang
     Route::get('list-order/{idU}', [OderController::class, 'show']);  //danh sách các đơn hàng của từng khách hàng
     Route::post('insert-order', [OderController::class, 'Store']); //thêm 1 dơn hàng
     Route::put('update-order/{idOrder}', [OderController::class, 'update']); //cập nhật trạng thái đơn hàng

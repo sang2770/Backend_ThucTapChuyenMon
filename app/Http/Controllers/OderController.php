@@ -27,6 +27,17 @@ class OderController extends Controller
             return response()->json(['status' => "Failed"]);
         }
     }
+    public function FilterID($id){
+        try {
+            $order=tb_order::join('tb_shipinfo', 'tb_shipinfo.id_ship', '=', 'tb_order.id_ship')
+            ->select('*')
+            ->Where('tb_shipinfo.phone', 'like', '%'.$id.'%')
+            ->get();
+            return response()->json(['status' => "Success", 'data' => $order]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed"]);
+        }
+    }
     public function show($id){
         try {
             $order=tb_orderdetail::join('tb_product', 'tb_product.id_product', '=', 'tb_order_details.id_product')
