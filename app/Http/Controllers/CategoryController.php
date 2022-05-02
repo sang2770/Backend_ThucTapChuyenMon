@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    //
     public function index(Request $request)
     {
         try {
@@ -16,6 +15,15 @@ class CategoryController extends Controller
             return response()->json(['status' => "Success", 'data' => $category]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
+        }
+    }
+    public function show(){
+        try {
+            $product=tb_category::select('*')->get();
+            return response()->json(['status' => "Success", 'data' => $product]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed", 'err' => $e]);
+            
         }
     }
 }

@@ -32,7 +32,7 @@ class CartSeeder extends Seeder
         ]);
         tb_cart::insert([
             'id_user'    => "2",
-            'id_product' => "6",
+            'id_product' => "5",
             'number'     => "2",
         ]);
         tb_cart::insert([

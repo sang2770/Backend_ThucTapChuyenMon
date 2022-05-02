@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tb_cart;
 use App\Models\tb_order;
+use App\Models\tb_orderdetail;
 use Exception;
 use Faker\Extension\Extension;
 use Illuminate\Http\Request;
@@ -13,8 +15,8 @@ class OderController extends Controller
         $limit = $request->query('limit');
         $page = $request->query('page');
         try {
-            $order=tb_order::select('*')->paginate($limit, [
-                'id_order', 'address', 'status', 'time', 'id_user'
+            $order=tb_order::join('tb_user', 'tb_user.id_user', '=', 'tb_order.id_user')->select('*')->paginate($limit, [
+                '*'
             ], 'page', $page)->toArray();
             return response()->json(['status' => "Success", 'data' => $order['data'], 'pagination' => [
                 "page" => $order['current_page'],
@@ -27,7 +29,7 @@ class OderController extends Controller
     }
     public function show($id){
         try {
-            $order=tb_order::select('*')->where('id_order', $id)->get();
+            $order=tb_orderdetail::select('*')->where('id_order', $id)->get();
             return response()->json(['status' => "Success", 'data' => $order]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);

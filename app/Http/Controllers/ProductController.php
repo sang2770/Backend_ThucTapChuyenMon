@@ -39,8 +39,8 @@ class ProductController extends Controller
         $limit = $request->query('limit');
         $page = $request->query('page');
         try {
-            $product=tb_product::where('id_category', '=', $id)->paginate($limit, [
-                'id_product', 'rate', 'availability', 'descriptions', 'name', 'price', 'discount', 'image'
+            $product=tb_product::join('tb_category', 'tb_category.id_category', '=', 'tb_product.id_category')->where('id_category', '=', $id)->paginate($limit, [
+                'id_product', 'rate', 'availability', 'descriptions', 'name', 'price', 'discount', 'image', 'tb_category.name_category'
             ], 'page', $page)->toArray();
             return response()->json(['status' => "Success", 'data' => $product['data'], 'pagination' => [
                 "page" => $product['current_page'],
@@ -57,7 +57,7 @@ class ProductController extends Controller
     public function showItems($id)
     {
         try {
-            $product=tb_product::select('*')->where('id_product', '=', $id)->get();
+            $product=tb_product::join('tb_category', 'tb_category.id_category', '=', 'tb_product.id_category')->select('*')->where('id_product', '=', $id)->get();
             return response()->json(['status' => "Success", 'data' => $product]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);

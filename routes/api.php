@@ -14,7 +14,6 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\WishListController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -166,5 +165,11 @@ Route::group([ //them sua xoa thong tin
     Route::post('insert-shipinfo', [ShipinfoController::class, 'Store']); 
     Route::delete('delete-shipinfo/{idShip}', [ShipinfoController::class, 'Destroy']); //xoas thông tin giao hàng 
     Route::put('update-shipinfo/{idShip}', [ShipinfoController::class, 'update']); //update thông tin giao hàng
+});
+
+Route::group([ //them sua xoa thong tin
+    'prefix' => 'category',
+], function () {
+    Route::get('list-category', [CategoryController::class, 'show']);  //danh sách thông tin giao hàng của từng khách hàng
 });
 
