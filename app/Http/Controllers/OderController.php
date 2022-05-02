@@ -44,7 +44,7 @@ class OderController extends Controller
                 'address'  => $Input["address"],
                 'status'  => $Input["status"],
                 'time'  => $Input["time"],
-                'id_user'  => $Input["id_user"],
+                'id_ship'  => $Input["id_ship"],
             ];
         }catch (\Throwable $th) {
             throw $th;
