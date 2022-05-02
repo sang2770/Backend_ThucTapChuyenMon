@@ -16,28 +16,30 @@ class OrderSeeder extends Seeder
     public function run()
     {
         tb_order::insert([
-            'id_order'  => "1",
             'address'   => "Cầu giấy - HN",
             'status'    => "0",
             'time'      => "2022-02-10",
-            'id_user'   => "1",
+            'id_ship'   => "1",
         ]);
 
         tb_order::insert([
-            'id_order'  => "2",
             'address'   => "Thanh xuân - HN",
             'status'    => "0",
             'time'      => "2022-03-11",
-            'id_user'   => "1",
+            'id_ship'   => "1",
         ]);
 
         tb_order::insert([
-            'id_order'  => "3",
             'address'   => "Cầu giấy - HN",
             'status'    => "0",
             'time'      => "2022-03-20",
-            'id_user'   => "2",
+            'id_ship'   => "2",
         ]);
-
+        tb_order::insert([
+            'address'   => "Cầu giấy - HN",
+            'status'    => "0",
+            'time'      => "2022-03-20",
+            'id_ship'   => "3",
+        ]);
     }
 }
