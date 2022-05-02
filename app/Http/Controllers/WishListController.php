@@ -23,7 +23,7 @@ class WishListController extends Controller
             }
             $wish=tb_wishlist::join("tb_user", "tb_user.id_user", "=", "tb_wishlist.id_user")
             ->join('tb_wishlist_details', 'tb_wishlist_details.id_wishlist', '=', 'tb_wishlist.id_wishlist')
-            ->join("tb_product", "tb_product.id_product", "=", "tb_wishlist.id_product")
+            ->join("tb_product", "tb_product.id_product", "=", "tb_wishlist_details.id_product")
             ->where('tb_user.id_user', $id)
             ->paginate($limit, [
                 'tb_product.id_product',
