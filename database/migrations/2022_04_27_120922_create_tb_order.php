@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('address', 100);
             $table->integer('status');
             $table->date('time');
-            $table->unsignedInteger('id_user');
-            $table->foreign('id_user')->references('id_user')->on('tb_user');
+            $table->unsignedInteger('id_ship');
+            $table->foreign('id_ship')->references('id_ship')->on('tb_shipinfo');
         });
     }
 

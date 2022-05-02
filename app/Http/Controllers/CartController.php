@@ -13,8 +13,10 @@ class CartController extends Controller
         $limit = $request->query('limit');
         $page = $request->query('page');
         try {
-            $cart=tb_cart::paginate($limit, [
-                'id_user', 'id_product', 'number'
+            $cart=tb_cart::join('tb_product', 'tb_product.id_product', '=', 'tb_cart.id_product')
+            ->select('*')
+            ->paginate($limit, [
+                '*'
             ], 'page', $page)->toArray();
             return response()->json(['status' => "Success", 'data' => $cart['data'], 'pagination' => [
                 "page" => $cart['current_page'],
