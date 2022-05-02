@@ -58,13 +58,15 @@ class WishListController extends Controller
         }
         try {
             $user=tb_wishlist::where('id_user', $request['id_user'])->first();
-            $idWish=$user->id_wishlist;
             if(!$user)
             {
+                
                 $wish=tb_wishlist::create([
                     'id_user'=>$request['id_user']
                 ]);
                 $idWish=$wish->id_wishlist;
+            }else{
+                $idWish=$user->id_wishlist;
             }
         wishlistdetails::create([
             'id_product'=>$request['id_product'],
