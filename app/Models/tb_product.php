@@ -8,7 +8,7 @@ use App\Traits\Filterable as TraitsFilterable;
 
 class tb_product extends Model
 {
-    // use TraitsFilterable;
+    use TraitsFilterable;
     protected $table = 'tb_product';
     protected $fillable = [
         'id_product',
