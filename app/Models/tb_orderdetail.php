@@ -13,6 +13,8 @@ class tb_orderdetail extends Model
         'id_order',
         'number',
         'price',
+        'color',
+        'size'
     ];
     public $timestamps = false;
 }

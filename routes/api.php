@@ -158,6 +158,7 @@ Route::group([
     Route::get('list-order-user/{idU}', [OderController::class, 'listOrder']);  //danh sách đơn hàng của 1 khách hangf
     Route::post('insert-order', [OderController::class, 'Store']); //thêm 1 dơn hàng
     Route::put('update-order/{idOrder}', [OderController::class, 'update']); //cập nhật trạng thái đơn hàng
+    Route::post('insert-order-product', [OderController::class, 'storeProductInOrder']); //Thêm sản phẩm vào đơn hàng
 });
 
 Route::group([ //them sua xoa thong tin

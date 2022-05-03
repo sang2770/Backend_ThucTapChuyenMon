@@ -8,6 +8,8 @@ use App\Models\tb_orderdetail;
 use Exception;
 use Faker\Extension\Extension;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Validator;
 
 class OderController extends Controller
 {
@@ -128,4 +130,35 @@ class OderController extends Controller
             return response()->json(['status' => "Failed", 'Err_Message' => $e]);
         }
     }
+
+     // Them
+     public function storeProductInOrder(Request $request)
+     {
+         $validator = Validator::make($request->all(),[
+             'id_product'=>'required',
+             'id_order'=>'required',
+             'number'=>'required',
+             'price'=>'required',
+             'color'=>'required',
+             'size'=>'required'
+         ]);
+ 
+         if($validator->fails()){
+             return response()->json(['status'=>"Failed", "Err_Message"=>Arr::first(Arr::flatten($validator->errors()->get('*')))]);
+         }
+         try {
+             tb_orderdetail::create([
+                'id_product'=>$request["id_product"],
+                'id_order'=>$request["id_order"],
+                'number'=>$request["number"],
+                'price'=>$request["price"],
+                'color'=>$request["color"],
+                'size'=>$request["size"]
+             ]);
+         return response()->json(['status'=>"Success"]);
+         } catch (Exception $e) {
+             return response()->json(['status' => "Failed", 'Err_Message' => $e->getMessage()]);
+         }
+ 
+     }
 }
