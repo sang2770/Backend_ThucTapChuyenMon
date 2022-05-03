@@ -103,7 +103,7 @@ class OderController extends Controller
             $item = $this->create($request->all());
             tb_order::insert($item);
             $idP = tb_order::max('id_order');
-            return response()->json(['status' => "Success", 'data' => ["order" => $item, "id" => $idP]]);
+            return response()->json(['status' => "Success", 'data' => $idP]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
         }
