@@ -28,6 +28,17 @@ class ShipinfoController extends Controller
         }
     }
 
+    //lấy thông tin chi tiết 1 shipinfo
+    public function showItem($id)
+    {
+        try {
+            $shipinfo=tb_shipinfo::where('id_ship', '=', $id)->get();
+            return response()->json(['status' => "Success", 'data' => $shipinfo]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+
     public function create($Input){
         try {
             return [

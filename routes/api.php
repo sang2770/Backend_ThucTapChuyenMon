@@ -153,7 +153,9 @@ Route::group([
     'prefix' => 'order',
 ], function () {
     Route::get('list-orders', [OderController::class, 'index']);  //danh sách các đơn hàng phân trang
-    Route::get('list-order/{idU}', [OderController::class, 'show']);  //danh sách các đơn hàng của từng khách hàng
+    Route::get('list-orders/{id}', [OderController::class, 'FilterID']);  //danh sách các đơn hàng phân trang
+    Route::get('list-order/{idOrder}', [OderController::class, 'show']);  //chi tiết các sp của 1 đơn hàng
+    Route::get('list-order-user/{idU}', [OderController::class, 'listOrder']);  //danh sách đơn hàng của 1 khách hangf
     Route::post('insert-order', [OderController::class, 'Store']); //thêm 1 dơn hàng
     Route::put('update-order/{idOrder}', [OderController::class, 'update']); //cập nhật trạng thái đơn hàng
 });
@@ -162,6 +164,7 @@ Route::group([ //them sua xoa thong tin
     'prefix' => 'shipinfo',
 ], function () {
     Route::get('list-shipinfo/{id}', [ShipinfoController::class, 'show']);  //danh sách thông tin giao hàng của từng khách hàng
+    Route::get('item-shipinfo/{id}', [ShipinfoController::class, 'showItem']);  //danh sách thông tin giao hàng của từng khách hàng
     Route::post('insert-shipinfo', [ShipinfoController::class, 'Store']); 
     Route::delete('delete-shipinfo/{idShip}', [ShipinfoController::class, 'Destroy']); //xoas thông tin giao hàng 
     Route::put('update-shipinfo/{idShip}', [ShipinfoController::class, 'update']); //update thông tin giao hàng

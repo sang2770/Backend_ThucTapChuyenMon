@@ -27,12 +27,57 @@ class OderController extends Controller
             return response()->json(['status' => "Failed"]);
         }
     }
-    public function show($id){
+    public function FilterID(Request $request, $id){
+        $limit = $request->query('limit');
+        $page = $request->query('page');
+        try {
+            $order=tb_order::join('tb_shipinfo', 'tb_shipinfo.id_ship', '=', 'tb_order.id_ship')
+            ->select('*')
+            ->Where('tb_shipinfo.phone', 'like', '%'.$id.'%')
+            ->paginate($limit, ['*'], 'page', $page)->toArray();
+            return response()->json(['status' => "Success", 'data' => $order['data'], 'pagination' => [
+                "page" => $order['current_page'],
+                "limit" => $limit,
+                "TotalPage" => $order['last_page']
+            ]]);
+            return response()->json(['status' => "Success", 'data' => $order]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+    public function show(Request $request, $id){
+        $limit = $request->query('limit');
+        $page = $request->query('page');
         try {
             $order=tb_orderdetail::join('tb_product', 'tb_product.id_product', '=', 'tb_order_details.id_product')
             ->select('*')
-            ->where('id_order', $id)->get();
+            ->where('id_order', $id)
+            ->paginate($limit, ['*'], 'page', $page)->toArray();
+            return response()->json(['status' => "Success", 'data' => $order['data'], 'pagination' => [
+                "page" => $order['current_page'],
+                "limit" => $limit,
+                "TotalPage" => $order['last_page']
+            ]]);
             return response()->json(['status' => "Success", 'data' => $order]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+
+    public function listOrder(Request $request, $idU){
+        $limit = $request->query('limit');
+        $page = $request->query('page');
+        try {
+            $order=tb_order::join('tb_shipinfo', 'tb_shipinfo.id_ship', '=', 'tb_order.id_ship')
+            ->join('tb_user', 'tb_shipinfo.id_user', '=', 'tb_user.id_user')->select('*')
+            ->where('tb_user.id_user', $idU)
+            ->paginate($limit, ['*'], 'page', $page)->toArray();
+            return response()->json(['status' => "Success", 'data' => $order['data'], 'pagination' => [
+                "page" => $order['current_page'],
+                "limit" => $limit,
+                "TotalPage" => $order['last_page']
+            ]]);
+            return response()->json(['status' => "Success", 'data' => $order['data']]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
         }

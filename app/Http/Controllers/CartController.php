@@ -34,6 +34,8 @@ class CartController extends Controller
                 'id_user'    => $Input['id_user'],
                 'id_product' => $Input['id_product'],
                 'number'     => $Input['number'],
+                'color'     => $Input['color'],
+                'size'     => $Input['size']
             ];
         }catch (\Throwable $th) {
             throw $th;
