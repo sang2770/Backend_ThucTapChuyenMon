@@ -68,7 +68,7 @@ Route::group([
 ], function () {
     Route::get('list/{id}', [WishListController::class, 'index']);  
     Route::post('insert', [WishListController::class, 'store']); 
-    Route::delete('delete/{idWish}/{idPro}', [WishListController::class, 'destroy']); 
+    Route::delete('delete/{idUser}/{idPro}', [WishListController::class, 'destroy']); 
 });  
 
 
@@ -106,7 +106,7 @@ Route::group([
 */
 Route::group([
     'prefix' => 'Category',
-    'middleware' => ['auth:sanctum']
+    // 'middleware' => ['auth:sanctum']
 ], function () {
     Route::get('list', [CategoryController::class, 'index']);  
 });  
