@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request, $id){
         $limit = $request->query('limit');
         $page = $request->query('page');
         try {
             $cart=tb_cart::join('tb_product', 'tb_product.id_product', '=', 'tb_cart.id_product')
             ->select('*')
+            ->where('id_user', $id)
             ->paginate($limit, [
                 '*'
             ], 'page', $page)->toArray();

@@ -67,7 +67,7 @@ class ProductController extends Controller
     public function create($Input){
         try {
             return [
-                'rate'          => '0',
+                'rate'          => '5',
                 'availability'  => $Input['availability'],
                 'descriptions'  => $Input['descriptions'],
                 'name'          => $Input['name'],
@@ -134,7 +134,7 @@ class ProductController extends Controller
     public function infoUpdate($Input){
         try {
             return [
-                'rate'          => '0',
+                'rate'          => '5',
                 'availability'  => $Input['availability'],
                 'descriptions'  => $Input['descriptions'],
                 'name'          => $Input['name'],

@@ -120,12 +120,14 @@ Route::group([
     Route::post('insert-product', [ProductController::class, 'Store']); //thêm 1 sp
     Route::delete('delete-product/{idPro}', [ProductController::class, 'Destroy']); //xóa sp
     Route::put('update-product/{idPro}', [ProductController::class, 'update']); //sửa sp
+    Route::get('insert-color-pro', [ProductController::class, 'StoreColPro']);
+
 });
 
 Route::group([
     'prefix' => 'carts',
 ], function () {
-    Route::get('list-cart', [CartController::class, 'index']);  //danh sách sp phân trang
+    Route::get('list-cart/{id}', [CartController::class, 'index']);  //lấy giỏ hàng theo id user
     Route::post('insert-cart', [CartController::class, 'Store']); //thêm 1 sp
     Route::delete('delete-cart', [CartController::class, 'Destroy']); //xóa sp
     Route::delete('delete-cart/{idUser}/{idPro}', [CartController::class, 'Destroy2']); //xóa sp

@@ -52,5 +52,5 @@ class tb_product extends Model
         }
     }
 
-
+    
 }
