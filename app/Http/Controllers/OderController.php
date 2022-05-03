@@ -101,9 +101,9 @@ class OderController extends Controller
     public function Store(Request $request){
         try {
             $item = $this->create($request->all());
-
             tb_order::insert($item);
-            return response()->json(['status' => "Success", 'data' => ["order" => $item]]);
+            $idP = tb_order::max('id_order');
+            return response()->json(['status' => "Success", 'data' => ["order" => $item, "id" => $idP]]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
         }
