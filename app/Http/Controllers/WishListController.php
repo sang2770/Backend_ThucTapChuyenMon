@@ -80,10 +80,13 @@ class WishListController extends Controller
     }
 
     // Xoa product trong wishlist
-    public function destroy(Request $request, $idWish, $idPro)
+    public function destroy(Request $request, $idUser, $idPro)
     {
         try {
-            $wish=wishlistdetails::where('id_wishlist',$idWish)->where('id_product', $idPro);
+            $wish=wishlistdetails::join('tb_wishlist', 'tb_wishlist_details.id_wishlist', '=', 'tb_wishlist.id_wishlist')
+            ->join("tb_user", "tb_user.id_user", "=", "tb_wishlist.id_user")
+            ->join("tb_product", "tb_product.id_product", "=", "tb_wishlist_details.id_product")
+            ->where('tb_user.id_user',$idUser)->where('tb_wishlist_details.id_product', $idPro);
             if($wish->exists())
             {
                 $wish->delete();
