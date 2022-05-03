@@ -73,4 +73,20 @@ class CartController extends Controller
             return response()->json(['status' => "Failed"]);
         }
     }
+
+    public function updateCart(Request $request)
+    {
+        try {
+            if(tb_cart::where('id_user', $request->id_user)->where('id_product', $request->id_product)->exists()){
+                tb_cart::where('id_user', $request->id_user)
+                ->where('id_product', $request->id_product)
+                ->update(['number' => $request->number]);
+                return response()->json(['status' => "Success"]);
+            }else{
+                return response()->json(['status' => "Failed"]);
+            }
+        } catch (Exception $e) {
+            return response()->json(['status' => "Failed", 'Err_Message' => $e]);
+        }
+    }
 }
