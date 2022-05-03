@@ -13,7 +13,7 @@ class tb_order extends Model
         'address',
         'status',
         'time',
-        'id_user',
+        'id_ship',
     ];
     protected $primaryKey = 'id_order';
     public $timestamps = false;

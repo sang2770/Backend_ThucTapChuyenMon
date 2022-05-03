@@ -64,6 +64,25 @@ class OderController extends Controller
         }
     }
 
+    public function listOrder(Request $request, $idU){
+        $limit = $request->query('limit');
+        $page = $request->query('page');
+        try {
+            $order=tb_order::join('tb_shipinfo', 'tb_shipinfo.id_ship', '=', 'tb_order.id_ship')
+            ->join('tb_user', 'tb_shipinfo.id_user', '=', 'tb_user.id_user')->select('*')
+            ->where('tb_user.id_user', $idU)
+            ->paginate($limit, ['*'], 'page', $page)->toArray();
+            return response()->json(['status' => "Success", 'data' => $order['data'], 'pagination' => [
+                "page" => $order['current_page'],
+                "limit" => $limit,
+                "TotalPage" => $order['last_page']
+            ]]);
+            return response()->json(['status' => "Success", 'data' => $order['data']]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+
     public function create($Input){
         try{
             return [

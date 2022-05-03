@@ -96,7 +96,7 @@ class ProductController extends Controller
 
     public function createColor($Input){
         try {
-            $idP = tb_color::max('id_color');
+            $idP = tb_product::max('id_product');
 
             return [
                 'id_product'    => $idP,
