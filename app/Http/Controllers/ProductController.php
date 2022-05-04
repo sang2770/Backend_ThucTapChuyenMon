@@ -107,21 +107,67 @@ class ProductController extends Controller
         }
     }
 
+    public function insertColPro(Request $request){
+        try {
+            $color = $this->createColor($request->all());
+            tb_productcolor::insert($color);
+            return response()->json(['status' => "Success", 'data' => $color]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+
+    public function insertSizePro(Request $request){
+        try {
+            $size = $this->createSize($request->all());
+            tb_productsize::insert($size);
+
+            return response()->json(['status' => "Success", 'data' => $size]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+    
     //thêm từng sp
     public function Store(Request $request)
     {
         try {
             $item = $this->create($request->all());
-            $color = $this->createColor($request->all());
-            $size = $this->createSize($request->all());
-
             tb_product::insert($item);
-            tb_productcolor::insert($color);
-            tb_productsize::insert($size);
             
             return response()->json(['status' => "Success", 'data' => ["product" => $item]]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
+        }
+    }
+
+    //delete color product
+    public function deleteColPro($idP)
+    {
+        try {
+            if(tb_productcolor::where('id_product', $idP)->exists()){
+                tb_productcolor::where('id_product', $idP)->delete();
+                return response()->json(['status' => "Success"]);
+            }else{
+                return response()->json(['status' => "Failed"]);
+            }
+        } catch (Exception $e) {
+            return response()->json(['status' => "Failed", 'Err_Message' => $e]);
+        }
+    }
+
+    //delete size product
+    public function deleteSizePro($idP)
+    {
+        try {
+            if(tb_productsize::where('id_product', $idP)->exists()){
+                tb_productsize::where('id_product', $idP)->delete();
+                return response()->json(['status' => "Success"]);
+            }else{
+                return response()->json(['status' => "Failed"]);
+            }
+        } catch (Exception $e) {
+            return response()->json(['status' => "Failed", 'Err_Message' => $e]);
         }
     }
 
@@ -147,6 +193,7 @@ class ProductController extends Controller
             throw $th;
         }
     }
+
     public function update(Request $request, $id)
     {
         try {
@@ -170,6 +217,32 @@ class ProductController extends Controller
             return response()->json(['status' => "Success"]);
         }
         else{
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+
+    //update size product
+    public function updatetSizePro(Request $request, $id){
+        try {
+            tb_productsize::insert([
+                'id_product' => $id,
+                'id_size'    => $request->id_size,
+            ]);
+            return response()->json(['status' => "Success"]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+
+    //update color product
+    public function updatetColPro(Request $request, $id){
+        try {
+            tb_productcolor::insert([
+                'id_product' => $id,
+                'id_color'    => $request->id_color,
+            ]);
+            return response()->json(['status' => "Success"]);
+        } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
         }
     }

@@ -121,7 +121,12 @@ Route::group([
     Route::delete('delete-product/{idPro}', [ProductController::class, 'Destroy']); //xóa sp
     Route::put('update-product/{idPro}', [ProductController::class, 'update']); //sửa sp
     Route::get('insert-color-pro', [ProductController::class, 'StoreColPro']);
-
+    Route::post('insert-color-product', [ProductController::class, 'insertColPro']); //thêm color cho sp
+    Route::post('insert-size-product', [ProductController::class, 'insertSizePro']); //thêm size cho sp
+    Route::delete('delete-color-product/{idP}', [ProductController::class, 'deleteColPro']); //xóa sp
+    Route::delete('delete-size-product/{idP}', [ProductController::class, 'deleteSizePro']); //xóa sp
+    Route::post('update-color-product/{idP}', [ProductController::class, 'updatetColPro']); //thêm color cho sp
+    Route::post('update-size-product/{idP}', [ProductController::class, 'updatetSizePro']); //thêm size cho sp
 });
 
 Route::group([
