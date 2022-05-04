@@ -50,7 +50,7 @@ class CartController extends Controller
             if($item)
             {
                 tb_cart::where("id_product", $request['id_product'])->update([
-                    'number'=> $item->number+1
+                    'number'=> $item->number+$request['number']
                 ]);
             }else{
                 $item = $this->create($request->all());
