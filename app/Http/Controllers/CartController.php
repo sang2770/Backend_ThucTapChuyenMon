@@ -46,17 +46,17 @@ class CartController extends Controller
 
     public function Store(Request $request){
         try {
-            $item=tb_cart::where("id_product", $request['id_product'])->first();
+            $item=tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->first();
             if($item)
             {
-                tb_cart::where("id_product", $request['id_product'])->update([
+                tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->update([
                     'number'=> $item->number+$request['number']
                 ]);
             }else{
                 $item = $this->create($request->all());
                 tb_cart::insert($item);
             }
-            $item=tb_cart::where("id_product", $request['id_product'])->first();
+            $item=tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->first();
             
             return response()->json(['status' => "Success", 'data' => ["cart" => $item]]);
         } catch (Extension $e) {
