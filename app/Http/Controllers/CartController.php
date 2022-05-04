@@ -31,6 +31,7 @@ class CartController extends Controller
 
     public function create($Input){
         try{
+
             return [
                 'id_user'    => $Input['id_user'],
                 'id_product' => $Input['id_product'],
@@ -45,9 +46,18 @@ class CartController extends Controller
 
     public function Store(Request $request){
         try {
-            $item = $this->create($request->all());
-
-            tb_cart::insert($item);
+            $item=tb_cart::where("id_product", $request['id_product'])->first();
+            if($item)
+            {
+                tb_cart::where("id_product", $request['id_product'])->update([
+                    'number'=> $item->number+1
+                ]);
+            }else{
+                $item = $this->create($request->all());
+                tb_cart::insert($item);
+            }
+            $item=tb_cart::where("id_product", $request['id_product'])->first();
+            
             return response()->json(['status' => "Success", 'data' => ["cart" => $item]]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
