@@ -18,6 +18,7 @@ class OderController extends Controller
         $page = $request->query('page');
         try {
             $order=tb_order::join('tb_shipinfo', 'tb_shipinfo.id_ship', '=', 'tb_order.id_ship')
+            ->orderBy('id_order', 'desc')
             ->select('*')
             ->paginate($limit, ['*'], 'page', $page)->toArray();
             return response()->json(['status' => "Success", 'data' => $order['data'], 'pagination' => [
