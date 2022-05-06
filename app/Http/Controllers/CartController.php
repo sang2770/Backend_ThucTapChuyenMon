@@ -109,4 +109,14 @@ class CartController extends Controller
             return response()->json(['status' => "Failed"]);
         }
     }
+
+    public function countListCart($idUser){
+        try {
+            $count = tb_cart::where('id_user', $idUser)->get();
+            $count = $count->count();
+        return response()->json(['status'=>"Success", 'data' => $count]);
+        } catch (Exception $e) {
+            return response()->json(['status' => "Failed", 'Err_Message' => $e->getMessage()]);
+        }
+    }
 }
