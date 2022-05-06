@@ -98,4 +98,24 @@ class CartController extends Controller
             return response()->json(['status' => "Failed", 'Err_Message' => $e]);
         }
     }
+
+    public function DeleteAll($idUser){
+        if(tb_cart::where('id_user', '=', $idUser)->exists()){
+            tb_cart::where('id_user', '=', $idUser)->delete();
+            return response()->json(['status' => "Success"]);
+        }
+        else{
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+
+    public function countListCart($idUser){
+        try {
+            $count = tb_cart::where('id_user', $idUser)->get();
+            $count = $count->count();
+        return response()->json(['status'=>"Success", 'data' => $count]);
+        } catch (Exception $e) {
+            return response()->json(['status' => "Failed", 'Err_Message' => $e->getMessage()]);
+        }
+    }
 }

@@ -136,7 +136,9 @@ Route::group([
     Route::post('insert-cart', [CartController::class, 'Store']); //thêm 1 sp
     Route::delete('delete-cart', [CartController::class, 'Destroy']); //xóa sp
     Route::delete('delete-cart/{idUser}/{idPro}', [CartController::class, 'Destroy2']); //xóa sp
+    Route::delete('delete-all-cart/{idUser}', [CartController::class, 'DeleteAll']);
     Route::put('update-number-cart', [CartController::class, 'updateCart']); //update so luong gio hàng
+    Route::get('count-list-cart/{idUser}', [CartController::class, 'countListCart']);
 });
 
 Route::group([
