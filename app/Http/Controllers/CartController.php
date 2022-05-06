@@ -28,7 +28,6 @@ class CartController extends Controller
             return response()->json(['status' => "Failed"]);
         }
     }
-
     public function create($Input){
         try{
 
