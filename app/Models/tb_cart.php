@@ -12,8 +12,8 @@ class tb_cart extends Model
         'id_user',
         'id_product',
         'number', 
-        'id_color',
-        'id_size',
+        'color',
+        'size',
     ];
     public $timestamps = false;
 }

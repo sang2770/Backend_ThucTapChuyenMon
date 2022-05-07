@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::table('tb_cart', function (Blueprint $table) {
-            $table->unsignedInteger('id_color');
-            $table->unsignedInteger('id_size');
+            $table->string('color', 50);
+            $table->string('size', 50);
         });
         Schema::table('tb_order_details', function (Blueprint $table) {
-            $table->unsignedInteger('id_color');
-            $table->unsignedInteger('id_size');
+            $table->string('color', 50);
+            $table->string('size', 50);
         });
     }
 

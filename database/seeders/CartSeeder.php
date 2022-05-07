@@ -19,36 +19,36 @@ class CartSeeder extends Seeder
             'id_user'    => "1",
             'id_product' => "1",
             'number'     => "2",
-            'id_color'   => "1",
-            'id_size'    => "1",
+            'color'   => "xanh",
+            'size'    => "X",
         ]);
         tb_cart::insert([
             'id_user'    => "1",
             'id_product' => "2",
             'number'     => "1",
-            'id_color'   => "2",
-            'id_size'    => "1",
+            'color'   => "xanh",
+            'size'    => "X",
         ]);
         tb_cart::insert([
             'id_user'    => "1",
             'id_product' => "3",
             'number'     => "2",
-            'id_color'   => "2",
-            'id_size'    => "2",
+            'color'   => "xanh",
+            'size'    => "X",
         ]);
         tb_cart::insert([
             'id_user'    => "2",
             'id_product' => "5",
             'number'     => "2",
-            'id_color'   => "1",
-            'id_size'    => "4",
+            'color'   => "xanh",
+            'size'    => "X",
         ]);
         tb_cart::insert([
             'id_user'    => "2",
             'id_product' => "3",
             'number'     => "1",
-            'id_color'   => "2",
-            'id_size'    => "3",
+            'color'   => "xanh",
+            'size'    => "X",
         ]);
     }
 }
