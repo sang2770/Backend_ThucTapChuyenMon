@@ -13,6 +13,7 @@ class tb_product extends Model
     protected $fillable = [
         'id_product',
         'rate',
+        'numberpro',
         'availability',
         'descriptions',
         'name',

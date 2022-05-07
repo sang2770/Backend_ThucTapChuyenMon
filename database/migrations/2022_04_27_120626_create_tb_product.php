@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tb_product', function (Blueprint $table) {
             $table->increments('id_product');
             $table->float('rate');
+            $table->integer('numberpro');
             $table->string('availability', 100);
             $table->string('descriptions', 200);
             $table->string('name', 100);

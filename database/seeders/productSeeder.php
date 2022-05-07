@@ -17,6 +17,7 @@ class productSeeder extends Seeder
     {
         tb_product::insert([
             'rate' => "4",
+            'numberpro' => "50",
             'availability' => "abcdefgh",
             'descriptions' => "áo thun nam siêu đẹp, mặc thoải mãi dễ chịu",
             'name' => "áo thun nam",
@@ -27,6 +28,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "4.5",
+            'numberpro' => "50",
             'availability' => "abcdefgh",
             'descriptions' => "áo phông nam siêu đẹp, mặc thoải mãi dễ chịu",
             'name' => "áo phông nam cao cấp",
@@ -37,6 +39,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "abcdefgh",
             'descriptions' => "quần âu cao cấp siêu đẹp, mặc thoải mãi",
             'name' => "quần âu cao cấp",
@@ -47,6 +50,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "abcdefgh",
             'descriptions' => "áo thun nữ ngắn tay phong cách trẻ trung",
             'name' => "áo thun nữ phong cách",
@@ -57,6 +61,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "abcdefgh",
             'descriptions' => "áo thun nữ ngắn tay phong cách trẻ trung",
             'name' => "áo thun nữ phong cách",
@@ -67,6 +72,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "4",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "60% cotton 40% polyester",
             'name' => "Áo phông nữ",
@@ -77,6 +83,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "4",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Áo kiểu nữ sát nách, chất liệu 100% cotton thoáng mát",
             'name' => "Áo kiểu nữ",
@@ -87,6 +94,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Áo phông nữ bo cổ, chất liệu 100% cotton in hình họa tiết",
             'name' => "Áo phông nữ",
@@ -97,6 +105,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Áo phông nữ in hình. Áo cổ tròn, tay cộc.",
             'name' => "Áo phông nữ",
@@ -107,6 +116,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Áo phông dòng active cổ tròn, chất liệu polyester có co giãn. Phù hợp đi tập luyện thể thao.",
             'name' => "Áo phông nữ",
@@ -117,6 +127,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Quần jeans nữ chất liệu 100% cotton USA thoải mái, phom slouchy",
             'name' => "Quần jeans nữ",
@@ -127,6 +138,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Quần jeans nữ dáng basic có túi",
             'name' => "Quần jeans nữ",
@@ -137,6 +149,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "4",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Quần jeans nữ",
             'name' => "Quần jeans nữ",
@@ -147,6 +160,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Quần jogger jeans chất liệu cotton USA, có co giãn. Cạp chun có luồn dây dệt, gấu chun, dáng regular",
             'name' => "Quần jeans nam",
@@ -157,6 +171,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Quần jeans chất liệu cotton có co giãn.
             Dáng ôm, cạp thường.
@@ -169,6 +184,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Áo polo nam basic. Cổ bằng bo dệt, cộc tay.",
             'name' => "Áo polo nam",
@@ -179,6 +195,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "4",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Áo polo nam basic.",
             'name' => "Áo polo nam",
@@ -189,6 +206,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Áo phông 100% cotton in hình",
             'name' => "Áo phông nam",
@@ -199,6 +217,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "5",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Áo phông nam form relax, in hổ bouncy trong phim hoạt hình gấu Pooh",
             'name' => "Áo phông nam",
@@ -209,6 +228,7 @@ class productSeeder extends Seeder
         ]);
         tb_product::insert([
             'rate' => "4",
+            'numberpro' => "50",
             'availability' => "Còn hàng",
             'descriptions' => "Áo phông 100% cotton in chữ nhỏ. Có gắn mác trang trí gấu áo",
             'name' => "Áo phông nam",
