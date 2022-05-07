@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\tb_user;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -19,19 +20,19 @@ class UserSeeder extends Seeder
             'id_user' => "1",
             'name' => "Nguyễn Văn An",
             'email' => "an@gmail.com",
-            'password' => "123",
+            'password' => Hash::make("123"),
         ]);
         tb_user::insert([
             'id_user' => "2",
             'name' => "Nguyễn Văn BÌnh",
             'email' => "binh@gmail.com",
-            'password' => "123",
+            'password' => Hash::make("123"),
         ]);
         tb_user::insert([
             'id_user' => "3",
             'name' => "Nguyễn Văn Hoàng",
             'email' => "hoang@gmail.com",
-            'password' => "123",
+            'password' => Hash::make("123"),
         ]);
         
     }

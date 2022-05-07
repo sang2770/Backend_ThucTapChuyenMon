@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\tb_cart;
 use App\Models\tb_order;
 use App\Models\tb_orderdetail;
+use App\Models\tb_product;
 use Exception;
 use Faker\Extension\Extension;
 use Illuminate\Http\Request;
@@ -148,6 +149,12 @@ class OderController extends Controller
             return response()->json(['status'=>"Failed", "Err_Message"=>Arr::first(Arr::flatten($validator->errors()->get('*')))]);
         }
         try {
+            $product=tb_product::where("id_product",$request["id_product"])->first();
+            if($product)
+            {
+                $Number=$product->numberpro;
+                tb_product::where("id_product",$request["id_product"])->update(["numberpro"=>$Number-$request["number"]]);
+            }
             tb_orderdetail::create([
             'id_product'=>$request["id_product"],
             'id_order'=>$request["id_order"],
