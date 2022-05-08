@@ -184,6 +184,7 @@ class ProductController extends Controller
                 'availability'  => $Input['availability'],
                 'descriptions'  => $Input['descriptions'],
                 'name'          => $Input['name'],
+                'numberpro'     => $Input['numberpro'],
                 'price'         => $Input['price'],
                 'discount'      => $Input['discount'],
                 'image'         => $Input['image'],
