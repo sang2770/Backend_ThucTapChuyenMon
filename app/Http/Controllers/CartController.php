@@ -49,20 +49,24 @@ class CartController extends Controller
             $item=tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->first();
             $pro = tb_product::select("numberpro")->where("id_product", $request['id_product'])->first();
             //var_dump($pro['numberpro']);
-            if($item)
-            {
-                tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->update([
-                    'number'=> $item->number+$request['number']
-                ]);
-                tb_product::where("id_product",  $request['id_product'])->update(['numberpro' => $pro->numberpro - $request['number']]);
+            if($pro['numberpro'] > 0){
+                if($item)
+                {
+                    tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->update([
+                        'number'=> $item->number+$request['number']
+                    ]);
+                    tb_product::where("id_product",  $request['id_product'])->update(['numberpro' => $pro->numberpro - $request['number']]);
+                }else{
+                    $item = $this->create($request->all());
+                    tb_cart::insert($item);
+                    tb_product::where("id_product",  $request['id_product'])->update(['numberpro' => $pro->numberpro - $request['number']]);
+                }
+                $item=tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->first();
+                
+                return response()->json(['status' => "Success", 'data' => ["cart" => $item]]);
             }else{
-                $item = $this->create($request->all());
-                tb_cart::insert($item);
-                tb_product::where("id_product",  $request['id_product'])->update(['numberpro' => $pro->numberpro - $request['number']]);
+                return response()->json(['status' => "Failed"]);
             }
-            $item=tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->first();
-            
-            return response()->json(['status' => "Success", 'data' => ["cart" => $item]]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
         }
