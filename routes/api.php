@@ -13,6 +13,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishListController;
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +111,17 @@ Route::group([
 ], function () {
     Route::get('list', [CategoryController::class, 'index']);  
 });  
+
+/*
+|--------------------------------------------------------------------------
+| User
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    'prefix' => 'customer',
+], function () {
+    Route::get('list-customer', [UserController::class, 'index']);  //danh sách sp phân trang
+});
 
 Route::group([
     'prefix' => 'products',
