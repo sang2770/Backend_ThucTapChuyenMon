@@ -107,7 +107,7 @@ Route::group([
 */
 Route::group([
     'prefix' => 'Category',
-    // 'middleware' => ['auth:sanctum']
+     'middleware' => ['auth:sanctum']
 ], function () {
     Route::get('list', [CategoryController::class, 'index']);  
 });  
@@ -139,6 +139,8 @@ Route::group([
     Route::delete('delete-size-product/{idP}', [ProductController::class, 'deleteSizePro']); //xóa sp
     Route::post('update-color-product/{idP}', [ProductController::class, 'updatetColPro']); //thêm color cho sp
     Route::post('update-size-product/{idP}', [ProductController::class, 'updatetSizePro']); //thêm size cho sp
+    Route::put('update-number-product', [ProductController::class, 'updateNumber']);
+    
 });
 
 Route::group([

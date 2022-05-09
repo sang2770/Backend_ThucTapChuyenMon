@@ -20,7 +20,7 @@ class ProductController extends Controller
         try {
             // $ListProduct=tb_product;
             $product=tb_product::filter($request)->paginate($limit, [
-                'id_product', 'rate', 'availability', 'descriptions', 'name', 'price', 'discount', 'image','id_category'
+                '*'
             ], 'page', $page)->toArray();
             return response()->json(['status' => "Success", 'data' => $product['data'], 'pagination' => [
                 "page" => $product['current_page'],
@@ -71,6 +71,7 @@ class ProductController extends Controller
                 'availability'  => $Input['availability'],
                 'descriptions'  => $Input['descriptions'],
                 'name'          => $Input['name'],
+                'numberpro'     => $Input['numberpro'],
                 'price'         => $Input['price'],
                 'discount'      => $Input['discount'],
                 'image'         => $Input['image'],
@@ -184,6 +185,7 @@ class ProductController extends Controller
                 'availability'  => $Input['availability'],
                 'descriptions'  => $Input['descriptions'],
                 'name'          => $Input['name'],
+                'numberpro'     => $Input['numberpro'],
                 'price'         => $Input['price'],
                 'discount'      => $Input['discount'],
                 'image'         => $Input['image'],
@@ -244,6 +246,16 @@ class ProductController extends Controller
             return response()->json(['status' => "Success"]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
+        }
+    }
+
+    public function updateNumber(Request $request){
+        try{
+            $pro = tb_product::select("numberpro")->where("id_product", $request->id_product)->first();
+            tb_product::where('id_product', $request->id_product)->update(['numberpro' => $pro['numberpro'] + $request->number]);
+            return response()->json(['status' => "Success"]);
+        } catch (Exception $e) {
+            return response()->json(['status' => "Failed", 'Err_Message' => $e]);
         }
     }
 }

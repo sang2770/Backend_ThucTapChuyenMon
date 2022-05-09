@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\tb_cart;
+use App\Models\tb_product;
 use Exception;
 use Faker\Extension\Extension;
 use Illuminate\Http\Request;
@@ -46,18 +47,26 @@ class CartController extends Controller
     public function Store(Request $request){
         try {
             $item=tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->first();
-            if($item)
-            {
-                tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->update([
-                    'number'=> $item->number+$request['number']
-                ]);
+            $pro = tb_product::select("numberpro")->where("id_product", $request['id_product'])->first();
+            //var_dump($pro['numberpro']);
+            if($pro['numberpro'] > 0){
+                if($item)
+                {
+                    tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->update([
+                        'number'=> $item->number+$request['number']
+                    ]);
+                    tb_product::where("id_product",  $request['id_product'])->update(['numberpro' => $pro->numberpro - $request['number']]);
+                }else{
+                    $item = $this->create($request->all());
+                    tb_cart::insert($item);
+                    tb_product::where("id_product",  $request['id_product'])->update(['numberpro' => $pro->numberpro - $request['number']]);
+                }
+                $item=tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->first();
+                
+                return response()->json(['status' => "Success", 'data' => ["cart" => $item]]);
             }else{
-                $item = $this->create($request->all());
-                tb_cart::insert($item);
+                return response()->json(['status' => "Failed"]);
             }
-            $item=tb_cart::where("id_user",$request['id_user'] )->where("id_product", $request['id_product'])->first();
-            
-            return response()->json(['status' => "Success", 'data' => ["cart" => $item]]);
         } catch (Extension $e) {
             return response()->json(['status' => "Failed"]);
         }
@@ -87,9 +96,17 @@ class CartController extends Controller
     {
         try {
             if(tb_cart::where('id_user', $request->id_user)->where('id_product', $request->id_product)->exists()){
+                $pro = tb_product::select("numberpro")->where("id_product", $request->id_product)->first();
+                $cart = tb_cart::select("number")->where('id_user', $request->id_user)
+                ->where('id_product', $request->id_product)->first();
+                
                 tb_cart::where('id_user', $request->id_user)
                 ->where('id_product', $request->id_product)
                 ->update(['number' => $request->number]);
+
+                tb_product::where("id_product",  $request->id_product)
+                ->update(['numberpro' => $pro->numberpro + $cart['number']  - $request->number]);
+
                 return response()->json(['status' => "Success"]);
             }else{
                 return response()->json(['status' => "Failed"]);
