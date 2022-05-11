@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tb_order;
 use App\Models\tb_shipinfo;
 use Exception;
 use Faker\Extension\Extension;
@@ -89,7 +90,10 @@ class ShipinfoController extends Controller
 
     //delete
     public function Destroy($id){
-        if(tb_shipinfo::where('id_ship', $id)->exists()){
+        if(tb_order::where('id_ship', $id)->exists()){
+            return response()->json(['status' => "Failed"]);
+        }
+        else if(tb_shipinfo::where('id_ship', $id)->exists()){
             tb_shipinfo::where('id_ship', $id)->delete();
             return response()->json(['status' => "Success"]);
         }

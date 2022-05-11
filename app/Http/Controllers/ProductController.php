@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\tb_color;
+use App\Models\tb_orderdetail;
 use App\Models\tb_product;
 use App\Models\tb_productcolor;
 use App\Models\tb_productsize;
@@ -214,7 +215,12 @@ class ProductController extends Controller
 
     //delete
     public function Destroy($id){
-        if(tb_product::where('id_product', $id)->exists()){
+        if(tb_orderdetail::where('id_product', $id)->exists()){
+            return response()->json(['status' => "Failed"]);
+        }
+        else if(tb_product::where('id_product', $id)->exists()){
+            tb_productcolor::where('id_product', $id)->delete();
+            tb_productsize::where('id_product', $id)->delete();
             tb_product::where('id_product', $id)->delete();
             return response()->json(['status' => "Success"]);
         }
