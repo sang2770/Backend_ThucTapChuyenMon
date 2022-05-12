@@ -26,4 +26,23 @@ class CategoryController extends Controller
             
         }
     }
+    public function Store(Request $request){
+        try {
+            tb_category::insert($request->all());
+            return response()->json(['status' => "Success"]);
+        } catch (Extension $e) {
+            return response()->json(['status' => "Failed"]);
+        }
+    }
+
+    public function Destroy($id)
+    {
+        if(tb_category::where('id_category', $id)->exists()){
+            tb_category::where('id_category', $id)->delete();
+            return response()->json(['status' => "Success"]);
+        }
+        else{
+            return response()->json(['status' => "Failed"]);
+        }
+    }
 }

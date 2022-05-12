@@ -198,6 +198,8 @@ Route::group([ //them sua xoa thong tin
 Route::group([ //them sua xoa thong tin
     'prefix' => 'category',
 ], function () {
-    Route::get('list-category', [CategoryController::class, 'show']);  //danh sách thông tin giao hàng của từng khách hàng
+    Route::get('list-category', [CategoryController::class, 'show']);  
+    Route::post('insert-category', [CategoryController::class, 'Store']);
+    Route::delete('delete-category/{id}', [CategoryController::class, 'Destroy']);
 });
 
